@@ -9,13 +9,15 @@ module source(clock,reset_n,start,Time,full,dry);
 	
 	always @ (posedge clock)
 	begin
-		start <= 1;	
+		reset_n = 1;
+		
+		start = 1; 	
 		#100;
-		Time <= 1;
+		Time = 1;
 		#100;
-		full <= 1;
+		full = 1;
 		#100;
-		dry <= 1;
+		dry = 1;
 		#100;
 	end
 endmodule
