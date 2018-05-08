@@ -22,20 +22,21 @@ module state_machine
 		endcase
 	end
 
-always @ (posedge clock, negedge reset_n) // Parte sequencial 
-	if(~reset_n)
-		this_state <= Wait;
-	else 
-		case(this_state)
-			Wait: if(start == 1)
-				this_state <= fill;
-			fill: if(full == 1)
-				this_state <= shake;
-			shake: if(Time == 1)
-				this_state <= turn;
-			turn: if(dry == 1)
-				this_state <= Wait;
-		endcase
+	always @ (posedge clock, negedge reset_n) // Parte sequencial 
+		if(~reset_n)
+			this_state <= Wait;
+		else 
+			case(this_state)
+				Wait: if(start == 1)
+					this_state <= fill;
+				fill: if(full == 1)
+					this_state <= shake;
+				shake: if(Time == 1)
+					this_state <= turn;
+				turn: if(dry == 1)
+					this_state <= Wait;
+			endcase
+	end
 endmodule
 
 // gtkwave 
