@@ -10,7 +10,7 @@ module state_machine
 			Wait: begin
 					valve = 0; shake_mode = 0; turn_mode = 0;
 				  end
-		    fill: begin
+		        fill: begin
 					valve = 1; shake_mode = 0; turn_mode = 0;
 				  end
 			shake: begin
