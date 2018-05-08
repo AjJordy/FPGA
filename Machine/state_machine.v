@@ -25,7 +25,7 @@ module state_machine
 	always @ (posedge clock, negedge reset_n) // Parte sequencial 
 		if(~reset_n)
 			this_state <= Wait;
-		else 
+		else begin
 			case(this_state)
 				Wait: if(start == 1)
 					this_state <= fill;
@@ -36,6 +36,7 @@ module state_machine
 				turn: if(dry == 1)
 					this_state <= Wait;
 			endcase
+		end
 	end
 endmodule
 
