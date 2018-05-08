@@ -22,7 +22,7 @@ module state_machine
 		endcase
 	end
 
-	always @ (posedge clock, negedge reset_n) // Parte sequencial 
+	always @ (posedge clock, negedge reset_n) begin // Parte sequencial 
 		if(~reset_n)
 			this_state <= Wait;
 		else begin
