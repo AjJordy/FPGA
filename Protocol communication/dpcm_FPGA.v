@@ -4,9 +4,8 @@ module dpcm_FPGA(SW,LEDR,LEDG);
 	output reg [1:0] LEDG;
 	wire in_ready;
 	reg [3:0] data;
-	wire [3:0] out;
+	wire [3:0] out;	
 	
-	//in_valid,in_ready,data
 	dpcm dpcm(
 		.clock(SW[0]),
 		.reset(SW[1]),
@@ -18,13 +17,14 @@ module dpcm_FPGA(SW,LEDR,LEDG);
 	
 	initial begin
 		data <= 1;
+		LEDR <= 0;
 	end
 	
 	always @ (posedge SW[0]) begin
 		LEDG[0] <= in_ready;
 		if(in_ready) begin
-			//data = data + 1;
-			LEDR[out] = 1;
+			data = data + 1;
+			LEDR[out] <= 1;
 		end
 	end
 endmodule
